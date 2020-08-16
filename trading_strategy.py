@@ -32,4 +32,14 @@ def trading_strategy(inputs):
 			return 0 # do nothing
 
 
-	
+def trading_strategySD(inputs):	
+	df = pd.DataFrame(inputs)
+	current_std = df['close'][-3:len(df)].std()   # std of last 3 prices
+	past_std = df['close'][-15:-3].std()
+
+	if df['close'].iloc[-1] > df['close'][-15:-3].max() and current_std > 1.5 * past_std:
+			return 1 # buy
+	elif df['close'].iloc[-1] < df['close'][-15:-3].min() and current_std > 1.5 * past_std:
+			return 1 # sell
+	else:
+		return 0

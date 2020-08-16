@@ -11,13 +11,16 @@ from trading_strategy import trading_strategy
 ############# READ FILE #############
 
 data = pd.read_csv('GBPUSD_H1_202001020600_202006010000.csv',sep='\t', skiprows=1, names = ['date', 'time', 'open', 'high', 'low', 'close', 'tickvol','vol','spread' ])
+#data = pd.read_csv('EURUSD_M30.csv',sep=',', skiprows=1, names = ['time', 'open', 'high', 'low', 'close', 'tickvol','vol','spread' ])
+#data = pd.read_csv('EURUSD_M30.csv',sep='\t', skiprows=1, names = ['date', 'time', 'open', 'high', 'low', 'close', 'tickvol','vol','spread' ])
 data = data.drop(['tickvol', 'vol','spread'], axis=1)  # we do not need these coloumns
+
 
 ############# Hyperparameters #############
 input_row_size = 30         # <----- Minimum number of inputs required by YOUR trading strategy
 one_pip = 0.0001            # <----- Indicating the value of 1 pip, i.e. usually 0.0001 for all major fx except for JPY pairs (0.01)
-stop_loss = -10*one_pip     # <----- (THIS WILL CHANGE!!, if the code recieves SELL sequentially the stop loss will be reduced)   The max amount of loss
-take_profit = 20*one_pip    # <----- (THIS WILL CHANGE!!, if the code recieves BUY sequentially the take profit will be increased)The max amount of profit
+stop_loss = -10*one_pip     # <----- (THIS WILL CHANGE!!, if the code recieves opposite signal than previously executed order then the position will be closed. 
+take_profit = 20*one_pip    # <----- For example. If we holding a buy pisition and sell signal received (labeled as buyy_sell in signalHandler.py) then the position will be closed. 
 broker_cost = 2*one_pip
 inputs = deque(maxlen=input_row_size)
 ############# BACKTESTING #############
@@ -34,7 +37,7 @@ for _,row in data.iterrows():
     inputs.append(row)
     
     if len(inputs) == input_row_size:
-        signal = trading_strategy(list(inputs)) # <----- USE to call trading strategy
+        signal = trading_strategy(list(inputs)) #  call trading strategy. It will return one of the following 1 (Buy), 0 (do nothing) or -1 (sell)
 
         # Current Price
         current_price = row['close']  

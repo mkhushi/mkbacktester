@@ -21,7 +21,16 @@ class signalHandler:
         self.current_action = ""
         self.data = data        
 
-    ############### Helpers ############### 
+    ############### Helpers ###############
+
+    # Floors or ceils PL 
+    def bandPL(self,PL):
+        if PL > self.take_profit:
+            PL = self.take_profit
+        elif PL < self.stop_loss:
+            PL = self.stop_loss
+        return PL
+
     # Only called when a trade happens
     def closeTrade(self,PL):
         # Reseting Current position,action AND toal profit
@@ -84,12 +93,15 @@ class signalHandler:
         elif self.prev_traded_position == -1:
             self.current_action = "short_buy"
             PL = (self.prev_traded_position*(current_price - self.prev_traded_price))-self.broker_cost
+            PL = self.bandPL(PL)
             self.closeTrade(PL)
             self.saveStats(PL,index)
 
         else: 
             print("Should not be here")
             
+        return self.total_profit
+
     def sell(self,current_price,index):
         
         PL = 0 # <----- Default for if currently holding
@@ -108,11 +120,13 @@ class signalHandler:
         elif self.prev_traded_position == 1:
             self.current_action = "sell"
             PL = (self.prev_traded_position*(current_price - self.prev_traded_price))-self.broker_cost
+            PL = self.bandPL(PL)
             self.closeTrade(PL)
             self.saveStats(PL,index)
         else: 
             print("Should not be here")
-    
+
+        return self.total_profit
     
     # Called from MAIN code when the HOLD signal is received
     # ALSO called by the BUY AND SELL functions when
@@ -125,9 +139,12 @@ class signalHandler:
             
             PL = (self.prev_traded_position*(current_price - self.prev_traded_price))-self.broker_cost
             
-            if PL > self.take_profit: 
+            if PL > self.take_profit:
+                PL = self.bandPL(PL) 
                 self.closeTrade(PL)
             elif PL < self.stop_loss:
+                PL = self.bandPL(PL)
                 self.closeTrade(PL)
         
         self.saveStats(PL,index)
+        return self.total_profit

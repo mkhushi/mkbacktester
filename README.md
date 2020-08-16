@@ -9,3 +9,7 @@ You could install TA-LIB from pre-compiled python wheels. Download from https://
 command on Windows:
 
 pip install C:\Users\matloob\Downloads\TA_Lib-0.4.18-cp38-cp38-win32.whl
+
+main.py file saves output to a csv file, and calls visualise.py which draws a plot of prices, buy and sell signals.
+
+To manually observe the backtesting trading data use jupyter notebook visualise.ipynb
