@@ -9,6 +9,7 @@ Install TA-Lib via Anconda command prompt
 $ conda install -c conda-forge ta-lib
 
 You could also install TA-LIB from pre-compiled python wheels. Download from https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
+Check your Python and make sure you download the right wheel for your platform (Windows/Mac, Python Version etc.)
 
 command on Windows:
 
