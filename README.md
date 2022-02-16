@@ -4,7 +4,11 @@ Back test your trading strategy on historical prices on any financial markets (F
 main.py is the main file that you need to edit for historical prices file.
 Read comments in the files.
 
-You could install TA-LIB from pre-compiled python wheels. Download from https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
+Install TA-Lib via Anconda command prompt
+
+$ conda install -c conda-forge ta-lib
+
+You could also install TA-LIB from pre-compiled python wheels. Download from https://www.lfd.uci.edu/~gohlke/pythonlibs/#ta-lib
 
 command on Windows:
 
