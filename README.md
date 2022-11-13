@@ -4,7 +4,11 @@ Back test your trading strategy on historical prices on any financial markets (F
 main.py is the main file that you need to edit for historical prices file.
 Read comments in the files.
 
-Install TA-Lib via Anconda command prompt
+There are two technical indicators calculating libraries ta and ta-lib, install via pip.
+
+pip install ta
+
+Or install TA-Lib via Anconda command prompt
 
 $ conda install -c conda-forge ta-lib
 
