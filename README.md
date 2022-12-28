@@ -1,4 +1,4 @@
-# PythonBacktestRunner
+# Python-based Back testing Trading Strategies - mkBackTester
 Python FX Backtesting Framework.
 
 Basic instructions - BacktestRunFile.py
