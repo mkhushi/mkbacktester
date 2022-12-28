@@ -29,4 +29,5 @@ Important notes
 2. Trading strategy input must be the class itself for basic and not an instantiated object. The data input is handled in the strategy.run(data) method. The preloaded strategy examples are good to review for the required basic structuring.  
   Charting indicators and Deep learning methods can require some pre-instantiation when combined with basic indicators, but the main premise is that a strategy should be able to function and produce its signals simply by running strategy.run(data)  
   
-Please contact pmcl2472@uni.sydney.edu.au if any issues and I will attempt to answer as soon as I can.
+Acknowledgement
+Many students have contributed to the final development of this work. The list is very long but Avinash, Mingyu and Patrick are the few names that I could remember if you have worked under my supervision and had contributed to this work, please let me know and I shall happyily put your name under this acknowledgement here. 
