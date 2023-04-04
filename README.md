@@ -31,4 +31,4 @@ Important notes
   
 Acknowledgement
 
-Many students have contributed to the final development of this work. The list is very long but Avinash, Mingyu and Patrick are the few names that I could remember if you have worked under my supervision and had contributed to this work, please let me know and I shall happyily put your name under this acknowledgement here. 
+Many students have contributed to the final development of this work. The list is very long but Avinash, Mingyu and Patrick (https://github.com/pmclennan) are the few names that I could remember if you have worked under my supervision and had contributed to this work, please let me know and I shall happyily put your name under this acknowledgement here. 
